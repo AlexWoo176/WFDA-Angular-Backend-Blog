@@ -14,17 +14,13 @@ export class TodoService {
   constructor(private http: HttpClient) {
   }
 
-  // getTodo(): Observable<ITodo[]> {
-  //   return this.http.get<ITodo[]>(this.API_URL);
-  // }
-
   getTodo(count = 10): Observable<ITodo[]> {
     return this.http.get<ITodo[]>(this.API_URL).pipe(
       map(response => response.filter((todo, i) => i < count))
     );
   }
 
-  getTodoByID(id: number): Observable<ITodo> {
+  getTodoById(id: number): Observable<ITodo> {
     return this.http.get<ITodo>(`${this.API_URL}/${id}`);
   }
 
